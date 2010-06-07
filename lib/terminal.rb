@@ -99,6 +99,7 @@ module GSM
 
     def method_missing(method, *args, &block) # :dodoc:
       #logger.debug "Creating dynamic method #{method}"
+      $GSM_SIMULATION ||= false # perform the action on a real device (HAXK)
       if File.exists?(File.join(@@scripts,"#{method}.ksc"))
         return meta( args, method )
       end
@@ -111,7 +112,7 @@ module GSM
     def meta(params=nil,method=this_method)
       # select the script suffix on the basis whether
       # the device is present or are we simulating a response
-      suffix = (GSM_SIMULATION ? '.sh' : '.ksc')
+      suffix = ($GSM_SIMULATION ? '.sh' : '.ksc')
 
       # use a script with the same name as the caller
       script = "#{method}"+suffix
@@ -121,7 +122,7 @@ module GSM
       script << ' "' + params.join('" "') + '"' if params.any?
 
       # execute script
-      if GSM_SIMULATION
+      if $GSM_SIMULATION
         response = exec_test(script)
       else
         response = exec_kermit(script)

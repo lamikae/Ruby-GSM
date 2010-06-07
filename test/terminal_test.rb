@@ -10,10 +10,14 @@ class TerminalTest < Test::Unit::TestCase
     assert ::GSM::Terminal.device_responds?
   end
 
+  def setup
+    @simulation = $GSM_SIMULATION
+  end
+
   # test the locked state only in simulation.
   # just assume that the actual device is already unlocked.
   def test_pin_ok
-    if GSM_SIMULATION
+    if @simulation
       ENV['PIN_FAILURE']='true'
       assert !::GSM::Terminal.pin_ok?
       ENV['PIN_FAILURE']='false'
@@ -23,7 +27,7 @@ class TerminalTest < Test::Unit::TestCase
 
   # entering the pin is tested only in simulation
   def test_enter_pin
-    if GSM_SIMULATION
+    if @simulation
       ENV['WRONG_PIN']='true'
       assert_raise(::GSM::CMEError) { ::GSM::Terminal.enter_pin('1234') }
       ENV['WRONG_PIN']='false'
@@ -33,7 +37,7 @@ class TerminalTest < Test::Unit::TestCase
 
   # assume that the device has carrier.
   def test_carrier
-    if GSM_SIMULATION
+    if @simulation
       ENV['NO_CARRIER']='true'
       assert !::GSM::Terminal.carrier?
       ENV['NO_CARRIER']='false'
@@ -43,7 +47,7 @@ class TerminalTest < Test::Unit::TestCase
 
   # test the string only with test data, to compare that the response is parsed OK
   def test_carrier_string
-    if GSM_SIMULATION
+    if @simulation
       ENV['NO_CARRIER']='false'
         assert ::GSM::Terminal.carrier=='FI elisa', 'Carrier string parse failure'
     end
@@ -51,12 +55,12 @@ class TerminalTest < Test::Unit::TestCase
 
   def test_device_id
     assert ::GSM::Terminal.device_id
-    assert_equal ::GSM::Terminal.device_id, 'Huawei E220, IMEI: 358451234567' if GSM_SIMULATION
+    assert_equal ::GSM::Terminal.device_id, 'Huawei E220, IMEI: 358451234567' if @simulation
   end
 
   def test_list_sms
     messages = ::GSM::Terminal.list_sms('ALL')
-    if GSM_SIMULATION
+    if @simulation
       assert_equal  messages.size, 3
       messages = ::GSM::Terminal.list_sms('REC UNREAD')
       assert_equal messages.size, 2
@@ -64,7 +68,7 @@ class TerminalTest < Test::Unit::TestCase
   end
 
   def test_list_sms_none
-    if GSM_SIMULATION
+    if @simulation
       ENV['NO_UNREAD_MESSAGES']='true'
       messages = ::GSM::Terminal.list_sms('REC UNREAD')
       assert messages.size==0
@@ -72,7 +76,7 @@ class TerminalTest < Test::Unit::TestCase
   end
 
   def test_read_failure
-    if GSM_SIMULATION
+    if @simulation
       ENV['SMS_INVALID']='true'
       assert_raise(::GSM::CMSError) { ::GSM::Terminal.read_sms('1') }
     end
@@ -86,7 +90,7 @@ class TerminalTest < Test::Unit::TestCase
     assert_not_nil msg, 'Device needs at least 1 SMS to test parsing'
     assert msg.index == 0, 'Index does not match'
     assert msg.status == 'REC READ'
-    if GSM_SIMULATION
+    if @simulation
       assert_equal '15004', msg.gsmnr
       assert_equal 'This is an SMS message, which may or may not include the string OK. ', msg.text
       assert_equal '08/08/21', msg.date

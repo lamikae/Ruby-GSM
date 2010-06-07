@@ -13,7 +13,7 @@ This was developed by using Huawei E220 modem, but in theory any GSM device that
 
 Example of how it is used:
 <code>
-    require 'Ruby-GSM'
+	load 'Ruby-GSM/init.rb'
 
     PIN='0000'
 
