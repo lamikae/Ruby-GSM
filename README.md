@@ -1,13 +1,12 @@
 This GSM Ruby library uses a 3G device to send and receive SMS messages.
 
-Check out Adam McKaig's [rubygsm](http://github.com/adammck/rubygsm) for another similar package that uses Ruby's native terminal interface.
-
 This package uses Kermit to send AT commands to the device, and supports only ASCII character set.
 Download Kermit from [here](http://www.columbia.edu/kermit/ck80.html#download).
+Check out Adam McKaig's [rubygsm](http://github.com/adammck/rubygsm) for another similar package that uses Ruby's native terminal interface.
 
 The source code was written in 2008 and has been proprietary until released in 2010. Therefore it is not very flexible,
-as for example there is no configuration file written in Ruby. Please set the modem device into `lib/kermit/kermrc`,
-which by default is `/dev/ttyUSB1`.
+as for example there is no configuration file written in Ruby. Unless your GSM modem is mapped to the device `/dev/ttyUSB1`,
+please set the proper modem device into `lib/kermit/kermrc`. 
 
 This was developed by using Huawei E220 modem, but in theory any GSM device that has a terminal interface should work.
 
