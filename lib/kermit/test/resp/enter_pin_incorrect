@@ -1,0 +1,4 @@
+AT+CPIN=0000
++CME ERROR: incorrect password
+
+^BOOT:76134991,0,0,0,6

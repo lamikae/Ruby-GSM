@@ -1,0 +1,4 @@
+#!/usr/bin/kermit +
+take kermrc
+
+CONNECT

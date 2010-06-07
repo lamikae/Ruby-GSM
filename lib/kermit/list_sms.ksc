@@ -1,0 +1,16 @@
+#!/usr/bin/kermit +
+#
+# parameters:
+#  1  CMGL filter: "ALL", "REC READ", "REC UNREAD", "STO SENT", "STO UNSENT"
+#  2  CMGF mode (PDU / 1=ASCII)
+# NOTE: listing marks the SMS as 'READ'
+take kermrc
+
+LINEOUT AT+CSCS="GSM"
+INPUT 3 OK
+LINEOUT AT+CMGF=\%2
+INPUT 3 OK
+LINEOUT AT+CMGL="\%1"
+INPUT 20 RSSI
+
+EXIT

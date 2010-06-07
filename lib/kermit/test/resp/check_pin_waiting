@@ -1,0 +1,4 @@
+AT+CPIN?
++CPIN: SIM PIN
+
+OK

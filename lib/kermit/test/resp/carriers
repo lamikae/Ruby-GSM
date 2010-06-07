@@ -1,0 +1,4 @@
+AT+COPS=?
++COPS: (2,"FI elisa","elisa","24405",0),(3,"FI SONERA","SONERA","24491",0),(3,"dna","dna","24412",0),,(0,1,3,4),(0,1,2)
+
+OK

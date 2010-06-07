@@ -1,0 +1,14 @@
+#!/usr/bin/kermit +
+#
+# 1: PUK-koodi
+# 2: uusi PIN
+#
+# If the PIN required is SIM PUK or SIM PUK2,  the  second  pin  is  required.
+# This second pin, <newpin>, is used to replace the old pin in the SIM.
+#
+take kermrc
+
+LINEOUT AT+CPIN=\%1, \%2
+INPUT 3 OK
+
+EXIT

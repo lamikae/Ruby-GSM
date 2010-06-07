@@ -1,0 +1,4 @@
+AT+COPS?
++COPS: 0,0,"FI elisa",0
+
+OK

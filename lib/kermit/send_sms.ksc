@@ -1,0 +1,15 @@
+#!/usr/bin/kermit +
+#
+# Parametrit:
+#  1  GSM-numero maatunnuksen +358 kera
+#  2  viesti (ascii-muodossa)
+#
+take kermrc
+
+LINEOUT AT+CMGF=1
+INPUT 3 OK
+LINEOUT AT+CMGS="\%1"
+OUTPUT \%2\26
+INPUT 3 OK
+
+EXIT

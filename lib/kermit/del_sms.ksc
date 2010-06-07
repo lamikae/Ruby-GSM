@@ -1,0 +1,11 @@
+#!/usr/bin/kermit +
+#
+# Parametrit:
+#  1  viestin numero
+#
+take kermrc
+
+LINEOUT AT+CMGD=\%1
+INPUT 20 OK
+
+EXIT

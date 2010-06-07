@@ -1,0 +1,4 @@
+AT+CSCS=?
++CSCS: ("IRA","GSM","UCS2")
+
+OK

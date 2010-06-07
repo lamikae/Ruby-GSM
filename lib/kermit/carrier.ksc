@@ -1,0 +1,7 @@
+#!/usr/bin/kermit +
+take kermrc
+
+LINEOUT AT+COPS?
+INPUT 3 OK
+
+EXIT

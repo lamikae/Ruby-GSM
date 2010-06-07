@@ -1,0 +1,16 @@
+#!/usr/bin/kermit +
+#
+# parameters:
+#  1  SMS index
+#  2  CMGF mode (PDU / ASCII)
+take kermrc
+
+LINEOUT AT+CSCS="GSM"
+INPUT 3 OK
+LINEOUT AT+CMGF=\%2
+INPUT 20 OK
+LINEOUT AT+CMGR=\%1
+INPUT 20 OK
+#INPUT 20 RSSI
+
+EXIT

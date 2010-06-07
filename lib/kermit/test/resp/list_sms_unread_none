@@ -1,0 +1,8 @@
+
+
+^BOOT:76134991,0,0,0,6
+
+
+OK
+AT+CMGL="REC UNREAD"
+OK

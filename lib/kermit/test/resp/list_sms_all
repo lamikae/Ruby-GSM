@@ -1,0 +1,13 @@
+AT+CMGF=1
+OK
+AT+CMGL="ALL"
++CMGL: 0,"REC READ","+358451234567",,"08/08/21,16:07:27+12"
+Testi
++CMGL: 1,"REC READ","15004",,"08/08/21,16:15:13+08"
+Tnn tulee taas uutta Saunalahdelta: KotiPuhelin on GSM-liittym, joka toimii kuin lankapuhelinliittym, mutta edullisemmin! www.saunalahti.fi 
++CMGL: 2,"REC READ","15004",,"08/08/21,16:19:42+08"
+Oletko Facebookissa? Nyt voit pivitt profiiliasi multimediaviestill, MMS:t Saunalahden liittymist Facebookiin ilmaiseksi! Katso saunalahti.fi 
+
+OK
+
+^BOOT:76134991,0,0,0,6
