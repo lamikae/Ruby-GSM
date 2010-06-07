@@ -1,0 +1,11 @@
+AT+CMGF=1
+OK
+AT+CMGR=0
++CMGR: 4,"REC READ","15004",,"08/08/21,16:15:13+08"
+This is an SMS message
+
+OK
+
+^BOOT:76134991,0,0,0,6
+
+^RSSI

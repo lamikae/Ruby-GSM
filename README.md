@@ -28,11 +28,15 @@ Example of how it is used:
       # fetch new messages
       new_messages = GSM::Terminal.list_sms 'REC UNREAD'
 
+      # read the message number 4
+      msg = GSM::Terminal.read_sms 4
+      puts '%s from %s' % [msg.text, msg.gsmnr]
+
       # send a new message
       GSM::Terminal.send_sms(['358451234567', 'message text'])
 
-      # delete message number 3
-      GSM::Terminal.del_sms 3
+      # delete message number 4
+      GSM::Terminal.del_sms 4
     end
 </code>
 
