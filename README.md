@@ -42,5 +42,5 @@ Example of how it is used:
 
 For a list of other commands, refer to the source code ;)
 
-You can also run a modem terminal session for debugging by `cd lib/kermit && kermit console`
+You can also run a modem terminal session for debugging by `cd lib/kermit && kermit console.ksc`
 
